@@ -38,4 +38,21 @@ public class Instrutor {
         this.Especialidade = dados.especialidade();
         this.endereco = new Endereco(dados.endereco());
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCnh() {
+        return cnh;
+    }
+
+    public Especialidade getEspecialidade() {
+        return Especialidade;
+    }
 }
