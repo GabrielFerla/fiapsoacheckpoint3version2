@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "fiap-spring-boot-project",
+		"name": "FIAP Spring Boot Project - Auto Escola",
+		"description": "Coleção completa de endpoints para o sistema de gerenciamento de auto escola",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "fiap-auto-escola"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"item": [
+				{
+					"name": "Verificar Status da Aplicação",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						},
+						"description": "Endpoint para verificar se a aplicação está funcionando"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para verificação de saúde da aplicação"
+		},
+		{
+			"name": "Instrutores",
+			"item": [
+				{
+					"name": "Cadastrar Instrutor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao.silva@autoescola.com\",\n  \"telefone\": \"(11) 99999-9999\",\n  \"cnh\": \"12345678901\",\n  \"especialidade\": \"CARRO\",\n  \"endereco\": {\n    \"logradouro\": \"Rua das Flores\",\n    \"numero\": \"123\",\n    \"complemento\": \"Apto 45\",\n    \"bairro\": \"Centro\",\n    \"cidade\": \"São Paulo\",\n    \"uf\": \"SP\",\n    \"cep\": \"01234-567\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/instrutor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"instrutor"
+							]
+						},
+						"description": "Cadastra um novo instrutor no sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Todos os Instrutores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/instrutor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"instrutor"
+							]
+						},
+						"description": "Lista todos os instrutores ativos no sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Instrutor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João Silva Atualizado\",\n  \"telefone\": \"(11) 88888-8888\",\n  \"endereco\": {\n    \"logradouro\": \"Rua das Palmeiras\",\n    \"numero\": \"456\",\n    \"complemento\": \"Casa 12\",\n    \"bairro\": \"Jardim\",\n    \"cidade\": \"São Paulo\",\n    \"uf\": \"SP\",\n    \"cep\": \"04567-890\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/instrutor/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"instrutor",
+								"1"
+							]
+						},
+						"description": "Atualiza dados de um instrutor existente (nome, telefone e endereço)"
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Instrutor (Soft Delete)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/instrutor/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"instrutor",
+								"1"
+							]
+						},
+						"description": "Marca um instrutor como inativo (soft delete)"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gerenciamento de instrutores"
+		},
+		{
+			"name": "Alunos",
+			"item": [
+				{
+					"name": "Cadastrar Aluno",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Maria Santos\",\n  \"email\": \"maria.santos@email.com\",\n  \"telefone\": \"(11) 77777-7777\",\n  \"cpf\": \"12345678901\",\n  \"endereco\": {\n    \"logradouro\": \"Avenida Paulista\",\n    \"numero\": \"1000\",\n    \"complemento\": \"Sala 101\",\n    \"bairro\": \"Bela Vista\",\n    \"cidade\": \"São Paulo\",\n    \"uf\": \"SP\",\n    \"cep\": \"01310-100\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/aluno",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"aluno"
+							]
+						},
+						"description": "Cadastra um novo aluno no sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Todos os Alunos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/aluno",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"aluno"
+							]
+						},
+						"description": "Lista todos os alunos ativos no sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Aluno",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Maria Santos Atualizada\",\n  \"telefone\": \"(11) 66666-6666\",\n  \"endereco\": {\n    \"logradouro\": \"Rua Augusta\",\n    \"numero\": \"500\",\n    \"complemento\": \"Loja 15\",\n    \"bairro\": \"Consolação\",\n    \"cidade\": \"São Paulo\",\n    \"uf\": \"SP\",\n    \"cep\": \"01305-000\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/aluno/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"aluno",
+								"1"
+							]
+						},
+						"description": "Atualiza dados de um aluno existente (nome, telefone e endereço)"
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Aluno (Soft Delete)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/aluno/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"aluno",
+								"1"
+							]
+						},
+						"description": "Marca um aluno como inativo (soft delete)"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gerenciamento de alunos"
+		},
+		{
+			"name": "Agendamentos",
+			"item": [
+				{
+					"name": "Criar Agendamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"alunoId\": 1,\n  \"instrutorId\": 1,\n  \"dataHoraInstrucao\": \"2024-12-02T10:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/agendamento",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agendamento"
+							]
+						},
+						"description": "Cria um novo agendamento de instrução"
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Agendamento (Instrutor Automático)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"alunoId\": 1,\n  \"dataHoraInstrucao\": \"2024-12-02T14:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/agendamento",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agendamento"
+							]
+						},
+						"description": "Cria agendamento com instrutor escolhido automaticamente pelo sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Todos os Agendamentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/agendamento",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agendamento"
+							]
+						},
+						"description": "Lista todos os agendamentos do sistema"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Agendamentos por Aluno",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/agendamento/aluno/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agendamento",
+								"aluno",
+								"1"
+							]
+						},
+						"description": "Lista todos os agendamentos de um aluno específico"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Agendamentos por Instrutor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/agendamento/instrutor/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agendamento",
+								"instrutor",
+								"1"
+							]
+						},
+						"description": "Lista todos os agendamentos de um instrutor específico"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancelar Agendamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"agendamentoId\": 1,\n  \"motivo\": \"ALUNO_DESISTIU\",\n  \"observacao\": \"Aluno informou que não poderá comparecer\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/agendamento/1/cancelar",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"agendamento",
+								"1",
+								"cancelar"
+							]
+						},
+						"description": "Cancela um agendamento existente"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para gerenciamento de agendamentos de instrução"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string",
+			"description": "URL base da aplicação Spring Boot"
+		}
+	]
+}
