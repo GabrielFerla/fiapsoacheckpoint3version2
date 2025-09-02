@@ -16,6 +16,8 @@ public record DadosCadastroInstrutor(
         @Email
         String email,
 
+        String telefone,
+
         @NotBlank
         @Pattern(regexp = "\\d{9,11}")
         String cnh,
