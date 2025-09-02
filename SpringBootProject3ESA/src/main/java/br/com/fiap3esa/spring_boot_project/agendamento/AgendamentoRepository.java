@@ -34,4 +34,10 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> 
     
     @Query("SELECT a FROM agendamento a WHERE a.instrutor.id = :instrutorId ORDER BY a.dataHoraInicio")
     List<Agendamento> findByInstrutorId(@Param("instrutorId") Long instrutorId);
+    
+    @Query("SELECT a FROM agendamento a WHERE a.status = 'CONFIRMADO' AND a.dataHoraInicio > :agora")
+    List<Agendamento> findAgendamentosConfirmadosFuturos(@Param("agora") LocalDateTime agora);
+    
+    @Query("SELECT a FROM agendamento a WHERE a.status = 'CANCELADO'")
+    List<Agendamento> findAgendamentosCancelados();
 }

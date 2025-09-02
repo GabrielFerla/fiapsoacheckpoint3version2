@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fiap3esa.spring_boot_project.agendamento.Agendamento;
 import br.com.fiap3esa.spring_boot_project.agendamento.AgendamentoRepository;
 import br.com.fiap3esa.spring_boot_project.agendamento.AgendamentoService;
+import br.com.fiap3esa.spring_boot_project.agendamento.CancelamentoService;
 import br.com.fiap3esa.spring_boot_project.agendamento.DadosAgendamento;
+import br.com.fiap3esa.spring_boot_project.agendamento.DadosCancelamentoAgendamento;
 import br.com.fiap3esa.spring_boot_project.agendamento.DadosListagemAgendamento;
 import jakarta.validation.Valid;
 
@@ -25,6 +27,9 @@ public class AgendamentoController {
     
     @Autowired
     private AgendamentoService service;
+    
+    @Autowired
+    private CancelamentoService cancelamentoService;
     
     @Autowired
     private AgendamentoRepository repository;
@@ -58,5 +63,18 @@ public class AgendamentoController {
         return repository.findByInstrutorId(instrutorId).stream()
             .map(DadosListagemAgendamento::new)
             .toList();
+    }
+    
+    @PostMapping("/{id}/cancelar")
+    public ResponseEntity<Agendamento> cancelarAgendamento(
+            @PathVariable Long id,
+            @RequestBody @Valid DadosCancelamentoAgendamento dados) {
+        
+        if (!id.equals(dados.agendamentoId())) {
+            return ResponseEntity.badRequest().build();
+        }
+        
+        Agendamento cancelado = cancelamentoService.cancelarAgendamento(dados);
+        return ResponseEntity.ok(cancelado);
     }
 }

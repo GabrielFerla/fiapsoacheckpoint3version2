@@ -48,15 +48,27 @@ public class Agendamento {
     @Enumerated(EnumType.STRING)
     StatusAgendamento status = StatusAgendamento.CONFIRMADO;
 
+    @Enumerated(EnumType.STRING)
+    MotivoCancelamento motivoCancelamento;
+
+    @Column(name = "data_cancelamento")
+    LocalDateTime dataCancelamento;
+
     @Column(name = "data_criacao")
     LocalDateTime dataCriacao = LocalDateTime.now();
 
-    public Agendamento(Aluno aluno, Instrutor instrutor, LocalDateTime dataHoraInicio) {
+        public Agendamento(Aluno aluno, Instrutor instrutor, LocalDateTime dataHoraInicio) {
         this.aluno = aluno;
         this.instrutor = instrutor;
         this.dataHoraInicio = dataHoraInicio;
-        this.dataHoraFim = dataHoraInicio.plusHours(1); 
+        this.dataHoraFim = dataHoraInicio.plusHours(1);
         this.status = StatusAgendamento.CONFIRMADO;
         this.dataCriacao = LocalDateTime.now();
+    }
+    
+    public void cancelar(MotivoCancelamento motivo, String observacao) {
+        this.status = StatusAgendamento.CANCELADO;
+        this.motivoCancelamento = motivo;
+        this.dataCancelamento = LocalDateTime.now();
     }
 }
