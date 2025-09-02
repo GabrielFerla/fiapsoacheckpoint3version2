@@ -21,7 +21,7 @@ public class InstrutorSelector {
     private AgendamentoRepository agendamentoRepository;
     
     public Instrutor selecionarInstrutorDisponivel(LocalDateTime dataHora) {
-        List<Instrutor> instrutoresAtivos = instrutorRepository.findAllAtivos();
+        List<Instrutor> instrutoresAtivos = instrutorRepository.findAtivos();
         
         if (instrutoresAtivos.isEmpty()) {
             throw new RuntimeException("Nenhum instrutor ativo encontrado no sistema");

@@ -66,7 +66,7 @@ public class Agendamento {
         this.dataCriacao = LocalDateTime.now();
     }
     
-    public void cancelar(MotivoCancelamento motivo, String observacao) {
+    public void cancelar(MotivoCancelamento motivo) {
         this.status = StatusAgendamento.CANCELADO;
         this.motivoCancelamento = motivo;
         this.dataCancelamento = LocalDateTime.now();

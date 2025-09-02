@@ -2,6 +2,7 @@ package br.com.fiap3esa.spring_boot_project.aluno;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -9,5 +10,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
     
     @Query("SELECT a FROM aluno a WHERE a.ativo = true")
-    List<Aluno> findAllAtivos();
+    List<Aluno> findAllAtivos(Pageable pageable);
 }

@@ -20,7 +20,7 @@ public class CancelamentoService {
         
         validator.validarCancelamento(agendamento);
         
-        agendamento.cancelar(dados.motivo(), dados.observacao());
+        agendamento.cancelar(dados.motivo());
         
         return agendamentoRepository.save(agendamento);
     }

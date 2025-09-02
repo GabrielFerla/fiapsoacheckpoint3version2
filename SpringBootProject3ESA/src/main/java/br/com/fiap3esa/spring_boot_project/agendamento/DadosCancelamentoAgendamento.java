@@ -7,8 +7,6 @@ public record DadosCancelamentoAgendamento(
     Long agendamentoId,
     
     @NotNull
-    MotivoCancelamento motivo,
-    
-    String observacao
+    MotivoCancelamento motivo
 ) {
 }

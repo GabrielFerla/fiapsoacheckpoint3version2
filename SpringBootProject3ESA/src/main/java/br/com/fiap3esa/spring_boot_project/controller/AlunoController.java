@@ -3,14 +3,10 @@ package br.com.fiap3esa.spring_boot_project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.PageRequest;
 
 import br.com.fiap3esa.spring_boot_project.aluno.Aluno;
 import br.com.fiap3esa.spring_boot_project.aluno.AlunoRepository;
@@ -35,8 +31,18 @@ public class AlunoController {
     }
 
     @GetMapping
-    public List<DadosListagemAluno> listarAlunos(){
-        return repository.findAllAtivos().stream().map(DadosListagemAluno::new).toList();
+    public List<DadosListagemAluno> listarAlunos(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size
+    ){
+        PageRequest pageable = PageRequest.of(
+                page,
+                size,
+                Sort.Direction.ASC,
+                "nome"
+        );
+
+        return repository.findAllAtivos(pageable).stream().map(DadosListagemAluno::new).toList();
     }
 
     @PutMapping("/{id}")
